@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include the Google Sign-In library -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Configure the Google Sign-In button -->
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+
+    <style>
+        /* CSS for Login Page */
+
+body {
+    background-image: url("https://diak46rl5chc7.cloudfront.net/orgs/140343/contents/ra9sjav4t4b15xi4/w920_ra9sjav4t4b15xi4.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    /* align content to the right */
+    margin-right: 50px;
+    align-items: center;
+    /* vertically center content */
+    height: 100vh;
+    /* 100% of viewport height */
+    background-color: #f0f0f0;
+    /* background color */
+}
+
+.login-container {
+    width: 350px;
+    /* width of the login container */
+    padding: 20px;
+    /* padding inside the container */
+    background-color: #fff;
+    /* container background color */
+    border: 1px solid #ccc;
+    /* container border */
+    border-radius: 5px;
+    /* rounded corners */
+    text-align: center;
+    /* center align content */
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    /* space below heading */
+}
+
+.login-container form label {
+    display: block;
+    /* display labels as block elements */
+    margin-bottom: 5px;
+    /* space between labels and inputs */
+    text-align: left;
+    /* left align label text */
+}
+
+.login-container form input[type="text"],
+.login-container form input[type="password"] {
+    width: calc(100% - 22px);
+    /* full width minus padding and border */
+    padding: 10px;
+    /* padding inside text input */
+    margin-bottom: 10px;
+    /* space between inputs */
+    border: 1px solid #ccc;
+    /* input border */
+    border-radius: 3px;
+    /* rounded corners */
+}
+
+.login-container form input[type="submit"] {
+    width: 100%;
+    /* full width button */
+    padding: 10px;
+    /* padding inside button */
+    background-color: #007bff;
+    /* button background color */
+    color: #fff;
+    /* button text color */
+    border: none;
+    /* remove button border */
+    border-radius: 3px;
+    /* rounded corners */
+    cursor: pointer;
+    /* show pointer on hover */
+}
+
+.g-signin2 {
+    font-weight: bold; /* Make the button bold */
+    text-align: center; /* Center the button horizontally */
+    margin-top: 20px; /* Add margin to the top for spacing */
+    margin-bottom: 20px;
+}
+
+.g-signin2 > div {
+    display: inline-block; /* Ensure the button behaves as an inline-block element */
+}
+
+    </style>
+
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Log In</h2>
+        <form action="login.html" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Your User id" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
+            <input type="submit" class="submit-button" value="Log In">
+        </form>
+        <!-- Google Sign-In button -->
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <div>
+            Forget Password ? <a href="">click here</a>
+            <br>
+            New User. <a href=""> click here</a>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle Google Sign-In -->
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            // You can perform additional actions here, like sending the user's profile information to your backend for authentication.
+        }
+    </script>
+</body>
+
+</html>

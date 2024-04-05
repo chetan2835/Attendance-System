@@ -1,0 +1,40 @@
+-- Create tables for admin, student, teacher, course, subject, and attendance
+CREATE TABLE admin (
+    id INTEGER PRIMARY KEY,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE student (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    roll_number TEXT NOT NULL
+);
+
+CREATE TABLE teacher (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    employee_id TEXT NOT NULL
+);
+
+CREATE TABLE course (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE subject (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    course_id INTEGER,
+    FOREIGN KEY (course_id) REFERENCES course(id)
+);
+
+CREATE TABLE attendance (
+    id INTEGER PRIMARY KEY,
+    student_id INTEGER,
+    subject_id INTEGER,
+    date TEXT NOT NULL,
+    is_present INTEGER DEFAULT 0,
+    FOREIGN KEY (student_id) REFERENCES student(id),
+    FOREIGN KEY (subject_id) REFERENCES subject(id)
+);
